@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Monthsary, Aking Sinta! ❤️</title>
+  <style>
+    :root {
+      --bg-color: #1a0b16;
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --accent: #ff4d6d;
+      --accent-glow: #ff758f;
+      --text: #fff0f3;
+      --text-muted: #ffccd5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #2b091e 0%, #0f040d 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Floating Background Particle Hearts */
+    .heart-particle {
+      position: absolute;
+      color: var(--accent);
+      font-size: 1.2rem;
+      user-select: none;
+      pointer-events: none;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      max-width: 650px;
+      width: 100%;
+      text-align: center;
+      z-index: 2;
+      margin-top: 20px;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      color: var(--accent-glow);
+      text-shadow: 0 0 15px rgba(255, 77, 109, 0.5);
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 25px;
+      font-style: italic;
+    }
+
+    .ldr-badge {
+      display: inline-block;
+      background: rgba(255, 77, 109, 0.15);
+      border: 1px solid var(--accent);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-bottom: 30px;
+      backdrop-filter: blur(5px);
+    }
+
+    /* Main Letter Box */
+    .main-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 25px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+      margin-bottom: 30px;
+      text-align: left;
+      line-height: 1.7;
+    }
+
+    .main-card h2 {
+      color: var(--accent-glow);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .main-card p {
+      margin-bottom: 12px;
+      color: #ffe6ea;
+    }
+
+    /* Open When Envelopes Grid */
+    .section-title {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: var(--accent-glow);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 117, 143, 0.3);
+      border-radius: 12px;
+      padding: 20px 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 5px 15px rgba(255, 77, 109, 0.3);
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* Hug Button */
+    .hug-btn {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 1.05rem;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .hug-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* Modal Pop-up for Notes */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 10;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      background: #250d1b;
+      border: 1px solid var(--accent);
+      border-radius: 16px;
+      padding: 25px;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(255, 77, 109, 0.3);
+      position: relative;
+    }
+
+    .modal-title {
+      color: var(--accent-glow);
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+    }
+
+    .modal-body {
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .close-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop src="bornforyou.mp3"></audio>
+
+  <div class="container">
+    <h1>Happy Monthsary 2nd Beb ❤️</h1>
+    <p class="subtitle">Malayo man sa tingin, ikaw pa rin ang pinakamalapit sa puso ko.</p>
+
+    <div class="ldr-badge">
+      📍 Distance is just a test to see how far love can travel ✨
+    </div>
+
+    <div class="main-card">
+      <h2>Para sa Pinakamagandang Regalo Ko...</h2>
+      <p>Happy Monthsary 2nd Beb! Gusto lang kitang paalalahanan kung gaano ka kahalaga sa buhay ko.</p>
+      <p>Kahit may mga kilometro man sa pagitan natin ngayon, bawat araw na nakakausap at nakakachat kita ay sapat na para kumpletuhin ang araw ko. Salamat sa pagiging pahinga at saya ko.</p>
+      <p>Sabik na akong dumating ang araw na hindi na natin kailangang magpaalam sa screen lang, kundi sa personal na. I love you so much beb!</p>
+    </div>
+
+    <div class="section-title">✉️ Open When...</div>
+
+    <div class="cards-grid">
+      <div class="card" onclick="openNote('kapagNamimissMoAko')">
+        <div class="card-icon">🥺</div>
+        <div class="card-title">You miss me</div>
+      </div>
+      <div class="card" onclick="openNote('kapagPagodKa')">
+        <div class="card-icon">🌧️</div>
+        <div class="card-title">You're tired</div>
+      </div>
+      <div class="card" onclick="openNote('pangakoKo')">
+        <div class="card-icon">🤝</div>
+        <div class="card-title">You Want To See My Promise</div>
+      </div>
+    </div>
+
+    <button class="hug-btn" onclick="sendHug()">🤗 Click for my love!</button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="noteModal">
+    <div class="modal-content">
+      <h3 class="modal-title" id="modalTitle">Title</h3>
+      <p class="modal-body" id="modalBody">Body content here...</p>
+      <button class="close-btn" onclick="closeNote()">Close</button>
+    </div>
+  </div>
+
+  <script>
+
+    // Play music on first user interaction anywhere on the page
+function playMusicOnFirstClick() {
+  const audio = document.getElementById('bgMusic');
+  audio.play().then(() => {
+    // Music started successfully
+    document.removeEventListener('click', playMusicOnFirstClick);
+    document.removeEventListener('touchstart', playMusicOnFirstClick);
+  }).catch(err => {
+    console.log("Autoplay blocked, waiting for next interaction.");
+  });
+}
+
+document.addEventListener('click', playMusicOnFirstClick);
+document.addEventListener('touchstart', playMusicOnFirstClick);
+
+    // Tagalog Love Notes Data
+    const notes = {
+      kapagNamimissMoAko: {
+        title: "Kapag Namimiss Mo Ako 💖",
+        body: "Kapag namimiss mo ako, ipikit mo lang ang mga mata mo at alalahanin na palagi kitang iniisip. Malayo man ako, bawat tibok ng puso ko ikaw ang isinisigaw. Isang yakap at halik mula rito papunta sa'yo!"
+      },
+      kapagPagodKa: {
+        title: "Kapag Pagod Ka Sa Araw Mo 🌙",
+        body: "Pahinga ka muna, mahal. Proud na proud ako sa lahat ng pinaghihirapan mo araw-araw. Tandaan mo na nandito lang ako palagi para makinig at suportahan ka. Magpahinga ka nang maayos ngayong gabi."
+      },
+      pangakoKo: {
+        title: "Pangako Ko Sa'yo 💍",
+        body: "Pangako ko sa'yo na maghihintay ako hanggang sa dumating ang araw na makasama na kita nang matagal. Kakayanin natin ang distansyang ito kasi ikaw lang ang gusto kong makasama sa huli."
+      }
+    };
+
+    function openNote(key) {
+      document.getElementById('modalTitle').innerText = notes[key].title;
+      document.getElementById('modalBody').innerText = notes[key].body;
+      document.getElementById('noteModal').style.display = 'flex';
+    }
+
+    function closeNote() {
+      document.getElementById('noteModal').style.display = 'none';
+    }
+
+    // Hug Explosion FX
+    function sendHug() {
+      for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.innerText = '💖';
+          heart.style.position = 'fixed';
+          heart.style.left = Math.random() * 90 + 5 + 'vw';
+          heart.style.bottom = '0px';
+          heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+          heart.style.zIndex = '100';
+          heart.style.transition = 'transform 2s ease-out, opacity 2s ease-out';
+          document.body.appendChild(heart);
+
+          requestAnimationFrame(() => {
+            heart.style.transform = `translateY(-${Math.random() * 300 + 300}px) scale(1.5)`;
+            heart.style.opacity = '0';
+          });
+
+          setTimeout(() => heart.remove(), 2000);
+        }, i * 80);
+      }
+    }
+
+    // Background Floating Hearts Generator
+    function createBackgroundHearts() {
+      const heart = document.createElement('div');
+      heart.className = 'heart-particle';
+      heart.innerText = ['❤️', '💖', '💕', '✨'][Math.floor(Math.random() * 4)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 7000);
+    }
+
+    setInterval(createBackgroundHearts, 500);
+  </script>
+</body>
+</html>
